@@ -22,9 +22,9 @@ protected:
 
 	const char* getLabel() const noexcept override { return "Template"; }
 
-	const char* getDescription() const override { return "DPF Template by Ternär Music Technology"; }
+	const char* getDescription() const override { return "DPF plugin template by Ternär Music Technology"; }
 
-	const char* getMaker() const noexcept override { return "Christopher Herb, Akaroid"; }
+	const char* getMaker() const noexcept override { return "Ternär Music Technology"; }
 
 	const char* getHomePage() const override { return "https://github.com/chrisherb"; }
 
