@@ -60,7 +60,6 @@ void TemplatePlugin::setParameterValue(uint32_t index, float value)
 
 void TemplatePlugin::run(const float** inputs, float** outputs, uint32_t frames)
 {
-
 	float inLeft, inRight;
 
 	for (uint32_t i = 0; i < frames; ++i) {

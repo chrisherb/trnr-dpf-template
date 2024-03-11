@@ -1,7 +1,9 @@
 #ifndef TEMPLATE_UI_HPP_INCLUDED
 #define TEMPLATE_UI_HPP_INCLUDED
 
-#include "TemplateUI.hpp"
+#include "DistrhoUI.hpp"
+
+#include "ImageWidgets.hpp"
 
 using DGL_NAMESPACE::ImageKnob;
 
@@ -9,10 +11,9 @@ START_NAMESPACE_DISTRHO
 
 // -----------------------------------------------------------------------
 
-class TemplateUI : public UI, public ImageKnob::Callback, public IdleCallback {
+class TemplateUI : public UI, public ImageKnob::Callback {
 public:
 	TemplateUI();
-	~TemplateUI() override;
 
 protected:
 	// -------------------------------------------------------------------
@@ -29,15 +30,9 @@ protected:
 
 	void onDisplay() override;
 
-	// -------------------------------------------------------------------
-	// Other Callbacks
-
-	void idleCallback() override;
-
 private:
 	Image fImgBackground;
-
-	ScopedPointer<ImageKnob> fGain;
+	ScopedPointer<ImageKnob> fKnobGain;
 
 	DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TemplateUI)
 };

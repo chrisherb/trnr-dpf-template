@@ -9,25 +9,24 @@ namespace Art = TemplateArtwork;
 
 TemplateUI::TemplateUI()
 	: UI(Art::backgroundWidth, Art::backgroundHeight, true)
-	, fImgBackground(Art::backgroundData, Art::backgroundWidth, Art::backgroundHeight, kImageFormatBGR)
-	, fAboutWindow(this)
+	, fImgBackground(Art::backgroundData, Art::backgroundWidth, Art::backgroundHeight, kImageFormatBGRA)
 {
+	const float width = getWidth();
+	const float height = getHeight();
+	const double scaleFactor = getScaleFactor();
 
 	// knobs
-	Image knobImage(Art::knobData, Art::knobWidth, Art::knobHeight, kImageFormatBGRA);
+	Image knobImage(Art::gainData, Art::gainWidth, Art::gainHeight, kImageFormatBGRA);
 
 	// knob Tuning
-	fKnobTuning = new ImageKnob(this, knobImage, ImageKnob::Vertical);
-	fKnobTuning->setId(TemplatePlugin::paramTuning);
-	fKnobTuning->setAbsolutePos(41, 43);
-	fKnobTuning->setRange(-12.0f, 12.0f);
-	fKnobTuning->setDefault(0.0f);
-	fKnobTuning->setValue(0.0f);
-	fKnobTuning->setRotationAngle(305);
-	fKnobTuning->setCallback(this);
+	fKnobGain = new ImageKnob(this, knobImage, ImageKnob::Vertical);
+	fKnobGain->setId(TemplatePlugin::paramGain);
+	fKnobGain->setAbsolutePos(75, 95);
+	fKnobGain->setRange(0, 1.0f);
+	fKnobGain->setDefault(0.0f);
+	fKnobGain->setValue(0.0f);
+	fKnobGain->setCallback(this);
 }
-
-TemplateUI::~TemplateUI() { removeIdleCallback(this); }
 
 // -----------------------------------------------------------------------
 // DSP Callbacks
@@ -36,7 +35,7 @@ void TemplateUI::parameterChanged(uint32_t index, float value)
 {
 	switch (index) {
 	case TemplatePlugin::paramGain:
-		fGain->setValue(value);
+		fKnobGain->setValue(value);
 		break;
 	}
 }
@@ -55,15 +54,6 @@ void TemplateUI::onDisplay()
 	const GraphicsContext& context(getGraphicsContext());
 
 	fImgBackground.draw(context);
-	fNeko.draw(context);
-}
-
-// -----------------------------------------------------------------------
-// Other Callbacks
-
-void TemplateUI::idleCallback()
-{
-	if (fNeko.idle()) repaint();
 }
 
 // -----------------------------------------------------------------------
