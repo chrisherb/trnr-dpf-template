@@ -1,6 +1,6 @@
 dpf_add_plugin(Template
   TARGETS
-    au clap jack vst2 vst3
+    au clap jack lv2 vst2 vst3
   FILES_DSP
     TemplatePlugin.cpp
   FILES_UI
