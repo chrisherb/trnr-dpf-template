@@ -21,7 +21,7 @@ TemplateUI::TemplateUI()
 	// knob Tuning
 	fKnobGain = new ImageKnob(this, knobImage, ImageKnob::Vertical);
 	fKnobGain->setId(TemplatePlugin::paramGain);
-	fKnobGain->setAbsolutePos(75, 95);
+	fKnobGain->setAbsolutePos(115, 83);
 	fKnobGain->setRange(0, 1.0f);
 	fKnobGain->setDefault(0.0f);
 	fKnobGain->setValue(0.0f);

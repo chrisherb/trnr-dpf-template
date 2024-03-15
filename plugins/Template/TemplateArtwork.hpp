@@ -11,9 +11,14 @@ namespace TemplateArtwork
     const unsigned int backgroundHeight   = 400;
 
     extern const char* gainData;
-    const unsigned int gainDataSize = 12250000;
-    const unsigned int gainWidth    = 250;
-    const unsigned int gainHeight   = 12250;
+    const unsigned int gainDataSize = 4508400;
+    const unsigned int gainWidth    = 170;
+    const unsigned int gainHeight   = 6630;
+
+    extern const char* meterData;
+    const unsigned int meterDataSize = 70400;
+    const unsigned int meterWidth    = 176;
+    const unsigned int meterHeight   = 100;
 }
 
 #endif // BINARY_TEMPLATEARTWORK_HPP
