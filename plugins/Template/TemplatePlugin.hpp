@@ -1,6 +1,7 @@
 #ifndef TEMPLATE_PLUGIN_HPP_INCLUDED
 #define TEMPLATE_PLUGIN_HPP_INCLUDED
 
+#include "../../common/MeterBuffer.h"
 #include "DistrhoPlugin.hpp"
 
 START_NAMESPACE_DISTRHO
@@ -11,6 +12,7 @@ class TemplatePlugin : public Plugin {
 public:
 	enum Parameters {
 		paramGain = 0,
+		paramMasterLevel,
 		paramCount
 	};
 
@@ -55,6 +57,7 @@ protected:
 
 private:
 	float fGain;
+	float fMasterLevel;
 
 	DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TemplatePlugin)
 };

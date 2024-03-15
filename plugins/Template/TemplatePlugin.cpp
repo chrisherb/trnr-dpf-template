@@ -30,6 +30,13 @@ void TemplatePlugin::initParameter(uint32_t index, Parameter& parameter)
 		parameter.ranges.min = 0.0f;
 		parameter.ranges.max = 1.0f;
 		break;
+	case paramMasterLevel:
+		parameter.name = "Master Level 1";
+		parameter.symbol = "masterlevel1";
+		parameter.hints = kParameterIsAutomatable | kParameterIsOutput;
+		parameter.ranges.min = -1.0f;
+		parameter.ranges.max = 1.0f;
+		break;
 	}
 }
 
@@ -41,9 +48,12 @@ float TemplatePlugin::getParameterValue(uint32_t index) const
 	switch (index) {
 	case paramGain:
 		return fGain;
+	case paramMasterLevel:
+		return fMasterLevel;
+	default:
+		DISTRHO_SAFE_ASSERT(false);
+		return 0.0;
 	}
-
-	return 0.0f;
 }
 
 void TemplatePlugin::setParameterValue(uint32_t index, float value)
@@ -51,6 +61,8 @@ void TemplatePlugin::setParameterValue(uint32_t index, float value)
 	switch (index) {
 	case paramGain:
 		fGain = value;
+		break;
+	case paramMasterLevel:
 		break;
 	}
 }
@@ -69,6 +81,8 @@ void TemplatePlugin::run(const float** inputs, float** outputs, uint32_t frames)
 		outputs[0][i] = inLeft * fGain;
 		outputs[1][i] = inRight * fGain;
 	}
+
+	fMasterLevel = (outputs[0][0] + outputs[1][0]) / 2;
 }
 
 // -----------------------------------------------------------------------

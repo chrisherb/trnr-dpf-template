@@ -15,10 +15,8 @@ TemplateUI::TemplateUI()
 	const float height = getHeight();
 	const double scaleFactor = getScaleFactor();
 
-	// knobs
+	// gain knob
 	Image knobImage(Art::gainData, Art::gainWidth, Art::gainHeight, kImageFormatBGRA);
-
-	// knob Tuning
 	fKnobGain = new ImageKnob(this, knobImage, ImageKnob::Vertical);
 	fKnobGain->setId(TemplatePlugin::paramGain);
 	fKnobGain->setAbsolutePos(115, 83);
@@ -26,6 +24,17 @@ TemplateUI::TemplateUI()
 	fKnobGain->setDefault(0.0f);
 	fKnobGain->setValue(0.0f);
 	fKnobGain->setCallback(this);
+
+	// meter
+	Image meterImage(Art::meterData, Art::meterWidth, Art::meterHeight, kImageFormatBGRA);
+	fMeter = new ImageKnob(this, meterImage, ImageKnob::Vertical);
+	fMeter->setId(TemplatePlugin::paramMasterLevel);
+	fMeter->setAbsolutePos(84, 262);
+	fMeter->setImageLayerCount(11);
+	fMeter->setRange(-1.0f, 1.0f);
+	fMeter->setDefault(0.0f);
+	fMeter->setValue(0.0f);
+	fMeter->setCallback(this);
 }
 
 // -----------------------------------------------------------------------
@@ -36,6 +45,9 @@ void TemplateUI::parameterChanged(uint32_t index, float value)
 	switch (index) {
 	case TemplatePlugin::paramGain:
 		fKnobGain->setValue(value);
+		break;
+	case TemplatePlugin::paramMasterLevel:
+		fMeter->setValue(value);
 		break;
 	}
 }
