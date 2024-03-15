@@ -17,8 +17,8 @@ namespace TemplateArtwork
 
     extern const char* meterData;
     const unsigned int meterDataSize = 70400;
-    const unsigned int meterWidth    = 176;
-    const unsigned int meterHeight   = 100;
+    const unsigned int meterWidth    = 16;
+    const unsigned int meterHeight   = 1100;
 }
 
 #endif // BINARY_TEMPLATEARTWORK_HPP
