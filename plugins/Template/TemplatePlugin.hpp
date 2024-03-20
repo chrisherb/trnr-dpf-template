@@ -1,7 +1,6 @@
 #ifndef TEMPLATE_PLUGIN_HPP_INCLUDED
 #define TEMPLATE_PLUGIN_HPP_INCLUDED
 
-#include "../../common/MeterBuffer.h"
 #include "DistrhoPlugin.hpp"
 
 START_NAMESPACE_DISTRHO

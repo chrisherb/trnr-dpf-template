@@ -16,9 +16,9 @@ namespace TemplateArtwork
     const unsigned int gainHeight   = 6630;
 
     extern const char* meterData;
-    const unsigned int meterDataSize = 70400;
-    const unsigned int meterWidth    = 16;
-    const unsigned int meterHeight   = 1100;
+    const unsigned int meterDataSize = 432;
+    const unsigned int meterWidth    = 12;
+    const unsigned int meterHeight   = 9;
 }
 
 #endif // BINARY_TEMPLATEARTWORK_HPP
