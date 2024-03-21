@@ -7,6 +7,7 @@ START_NAMESPACE_DISTRHO
 TemplatePlugin::TemplatePlugin()
 	: Plugin(paramCount, 0, 0) // 0 programs, 0 states
 	, fGain(0.5f)
+	, fWaveform(100)
 {
 }
 
@@ -18,6 +19,8 @@ void TemplatePlugin::initAudioPort(bool input, uint32_t index, AudioPort& port)
 	port.groupId = kPortGroupStereo;
 
 	Plugin::initAudioPort(input, index, port);
+
+	fWaveform.setSampleRate(getSampleRate());
 }
 
 void TemplatePlugin::initParameter(uint32_t index, Parameter& parameter)
@@ -28,13 +31,6 @@ void TemplatePlugin::initParameter(uint32_t index, Parameter& parameter)
 		parameter.symbol = "gain";
 		parameter.ranges.def = 0.5f;
 		parameter.ranges.min = 0.0f;
-		parameter.ranges.max = 1.0f;
-		break;
-	case paramMasterLevel:
-		parameter.name = "Master Level 1";
-		parameter.symbol = "masterlevel1";
-		parameter.hints = kParameterIsAutomatable | kParameterIsOutput;
-		parameter.ranges.min = -1.0f;
 		parameter.ranges.max = 1.0f;
 		break;
 	}
@@ -48,8 +44,6 @@ float TemplatePlugin::getParameterValue(uint32_t index) const
 	switch (index) {
 	case paramGain:
 		return fGain;
-	case paramMasterLevel:
-		return fMasterLevel;
 	default:
 		DISTRHO_SAFE_ASSERT(false);
 		return 0.0;
@@ -61,8 +55,6 @@ void TemplatePlugin::setParameterValue(uint32_t index, float value)
 	switch (index) {
 	case paramGain:
 		fGain = value;
-		break;
-	case paramMasterLevel:
 		break;
 	}
 }
@@ -82,7 +74,7 @@ void TemplatePlugin::run(const float** inputs, float** outputs, uint32_t frames)
 		outputs[1][i] = inRight * fGain;
 	}
 
-	fMasterLevel = (outputs[0][0] + outputs[1][0]) / 2;
+	fWaveform.process(inputs, frames);
 }
 
 // -----------------------------------------------------------------------

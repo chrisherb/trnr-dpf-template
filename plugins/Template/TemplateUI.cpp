@@ -10,6 +10,7 @@ namespace Art = TemplateArtwork;
 TemplateUI::TemplateUI()
 	: UI(Art::backgroundWidth, Art::backgroundHeight, true)
 	, fImgBackground(Art::backgroundData, Art::backgroundWidth, Art::backgroundHeight, kImageFormatBGRA)
+	, fImgMeter(Art::meterData, Art::meterWidth, Art::meterHeight, kImageFormatBGRA)
 {
 	const float width = getWidth();
 	const float height = getHeight();
@@ -24,17 +25,6 @@ TemplateUI::TemplateUI()
 	fKnobGain->setDefault(0.0f);
 	fKnobGain->setValue(0.0f);
 	fKnobGain->setCallback(this);
-
-	// meter
-	Image meterImage(Art::meterData, Art::meterWidth, Art::meterHeight, kImageFormatBGRA);
-	fMeter = new ImageKnob(this, meterImage, ImageKnob::Vertical);
-	fMeter->setId(TemplatePlugin::paramMasterLevel);
-	fMeter->setAbsolutePos(84, 262);
-	fMeter->setImageLayerCount(11);
-	fMeter->setRange(-1.0f, 1.0f);
-	fMeter->setDefault(0.0f);
-	fMeter->setValue(0.0f);
-	fMeter->setCallback(this);
 }
 
 // -----------------------------------------------------------------------
@@ -46,11 +36,13 @@ void TemplateUI::parameterChanged(uint32_t index, float value)
 	case TemplatePlugin::paramGain:
 		fKnobGain->setValue(value);
 		break;
-	case TemplatePlugin::paramMasterLevel:
-		fMeter->setValue(value);
-		break;
 	}
 }
+
+// -----------------------------------------------------------------------
+// UI Callbacks
+
+void TemplateUI::uiIdle() { repaint(); }
 
 // -----------------------------------------------------------------------
 // Widget Callbacks
@@ -66,6 +58,16 @@ void TemplateUI::onDisplay()
 	const GraphicsContext& context(getGraphicsContext());
 
 	fImgBackground.draw(context);
+
+	if (TemplatePlugin* const dspPtr = (TemplatePlugin*)getPluginInstancePointer()) {
+		auto& grid = dspPtr->fWaveform.getGrid();
+
+		for (uint32_t i = 0; i < grid.size(); ++i) {
+			for (uint32_t j = 0; j < grid.at(i).size(); ++j) {
+				if (grid.at(i).at(j)) { fImgMeter.drawAt(context, i * 14 + 84, j * 9 + 262); }
+			}
+		}
+	}
 }
 
 // -----------------------------------------------------------------------

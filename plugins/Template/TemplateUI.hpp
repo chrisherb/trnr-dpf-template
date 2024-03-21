@@ -22,6 +22,11 @@ protected:
 	void parameterChanged(uint32_t index, float value) override;
 
 	// -------------------------------------------------------------------
+	// UI Callbacks
+
+	void uiIdle() override;
+
+	// -------------------------------------------------------------------
 	// Widget Callbacks
 
 	void imageKnobDragStarted(ImageKnob* knob) override;
@@ -32,8 +37,10 @@ protected:
 
 private:
 	Image fImgBackground;
+	Image fImgMeter;
 	ScopedPointer<ImageKnob> fKnobGain;
-	ScopedPointer<ImageKnob> fMeter;
+
+	friend class TemplatePlugin;
 
 	DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TemplateUI)
 };

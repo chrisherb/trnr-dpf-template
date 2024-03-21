@@ -2,6 +2,7 @@
 #define TEMPLATE_PLUGIN_HPP_INCLUDED
 
 #include "DistrhoPlugin.hpp"
+#include "WaveformBuffer.h"
 
 START_NAMESPACE_DISTRHO
 
@@ -11,9 +12,10 @@ class TemplatePlugin : public Plugin {
 public:
 	enum Parameters {
 		paramGain = 0,
-		paramMasterLevel,
 		paramCount
 	};
+
+	WaveformBuffer<12, 20> fWaveform;
 
 	TemplatePlugin();
 
@@ -56,7 +58,6 @@ protected:
 
 private:
 	float fGain;
-	float fMasterLevel;
 
 	DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TemplatePlugin)
 };
