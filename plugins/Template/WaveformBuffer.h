@@ -33,15 +33,19 @@ public:
 				}
 
 				int halfRows = rows / 2;
-
 				int adjustedPos = posMax * halfRows;
-				int adjustedNeg = abs(negMax * halfRows - halfRows);
 
 				// upper half (positive values)
 				for (int rowIndex = 0; rowIndex < halfRows; rowIndex++) {
 					int adjustedIndex = abs(rowIndex - halfRows);
 					grid.at(cols - 1).at(rowIndex) = adjustedIndex <= adjustedPos;
 				}
+
+				// fill middle
+				grid.at(cols - 1).at(halfRows) = true;
+
+				halfRows++;
+				int adjustedNeg = abs(negMax * halfRows - halfRows);
 
 				// lower half (negative values)
 				for (int rowIndex = halfRows; rowIndex < rows; rowIndex++) {
