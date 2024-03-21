@@ -15,7 +15,7 @@ public:
 		paramCount
 	};
 
-	WaveformBuffer<12, 20> fWaveform;
+	WaveformBuffer<17, 27> fWaveform;
 
 	TemplatePlugin();
 

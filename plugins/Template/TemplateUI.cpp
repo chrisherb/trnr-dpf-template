@@ -10,7 +10,7 @@ namespace Art = TemplateArtwork;
 TemplateUI::TemplateUI()
 	: UI(Art::backgroundWidth, Art::backgroundHeight, true)
 	, fImgBackground(Art::backgroundData, Art::backgroundWidth, Art::backgroundHeight, kImageFormatBGRA)
-	, fImgMeter(Art::meterData, Art::meterWidth, Art::meterHeight, kImageFormatBGRA)
+	, fImgLed(Art::ledData, Art::ledWidth, Art::ledHeight, kImageFormatBGRA)
 {
 	const float width = getWidth();
 	const float height = getHeight();
@@ -64,7 +64,7 @@ void TemplateUI::onDisplay()
 
 		for (uint32_t i = 0; i < grid.size(); ++i) {
 			for (uint32_t j = 0; j < grid.at(i).size(); ++j) {
-				if (grid.at(i).at(j)) { fImgMeter.drawAt(context, i * 14 + 84, j * 9 + 262); }
+				if (grid.at(i).at(j)) { fImgLed.drawAt(context, i * 9 + 84, j * 6 + 262); }
 			}
 		}
 	}

@@ -37,7 +37,7 @@ protected:
 
 private:
 	Image fImgBackground;
-	Image fImgMeter;
+	Image fImgLed;
 	ScopedPointer<ImageKnob> fKnobGain;
 
 	friend class TemplatePlugin;
