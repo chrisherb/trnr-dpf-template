@@ -32,13 +32,13 @@ public:
 					for (int j = 0; j < rows; j++) { grid.at(i).at(j) = grid.at(i + 1).at(j); }
 				}
 
-				int halfRows = rows / 2;
-				int adjustedPos = posMax * halfRows;
+				int halfRows = floor(rows / 2);
+				int adjustedPos = posMax * (halfRows + 1);
 
 				// upper half (positive values)
 				for (int rowIndex = 0; rowIndex < halfRows; rowIndex++) {
-					int adjustedIndex = abs(rowIndex - halfRows);
-					grid.at(cols - 1).at(rowIndex) = adjustedIndex <= adjustedPos;
+					int adjustedIndex = abs(rowIndex - halfRows + 1);
+					grid.at(cols - 1).at(rowIndex) = adjustedIndex < adjustedPos;
 				}
 
 				// fill middle
