@@ -8,7 +8,7 @@
 template <int rows, int cols>
 class WaveformBuffer {
 public:
-	WaveformBuffer(float _time_ms) { time_smp = msToSamples(_time_ms); }
+	WaveformBuffer(float _time_ms) { setTimeMs(_time_ms); }
 
 	void setSampleRate(float _sampleRate) { _sampleRate = _sampleRate; }
 
