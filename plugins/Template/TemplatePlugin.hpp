@@ -15,8 +15,6 @@ public:
 		paramCount
 	};
 
-	WaveformBuffer<17, 27> fWaveform;
-
 	TemplatePlugin();
 
 protected:
@@ -58,6 +56,10 @@ protected:
 
 private:
 	float fGain;
+
+	friend class TemplateUI;
+
+	WaveformBuffer<17, 27> fWaveform;
 
 	DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TemplatePlugin)
 };
