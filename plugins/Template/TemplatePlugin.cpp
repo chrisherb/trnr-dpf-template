@@ -7,7 +7,7 @@ START_NAMESPACE_DISTRHO
 TemplatePlugin::TemplatePlugin()
 	: Plugin(paramCount, 0, 0) // 0 programs, 0 states
 	, fGain(0.5f)
-	, fWaveform(100)
+	, fWaveform(50)
 {
 }
 
