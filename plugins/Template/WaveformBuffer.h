@@ -88,4 +88,61 @@ private:
 	float negMax = 0;
 };
 
+template <int rows, int cols>
+class UnipolarWaveformBuffer : public BufferBase<rows, cols> {
+public:
+	UnipolarWaveformBuffer(float _time_ms)
+		: BufferBase<rows, cols>(_time_ms)
+	{
+	}
+
+	void process(const float** inputs, uint32_t frames) override
+	{
+		for (uint32_t i = 0; i < frames; ++i) {
+
+			// get maximum value from left/right channels
+			float localMax = abs(inputs[0][i]) > abs(inputs[1][i]) ? inputs[0][i] : inputs[1][i];
+
+			if (localMax > max) max = localMax;
+
+			if (BufferBase<rows, cols>::counter > 0) BufferBase<rows, cols>::counter--;
+
+			if (BufferBase<rows, cols>::counter <= 0) {
+				for (int i = 0; i < cols - 1; i++) {
+					// shift all values one column to the left
+					for (int j = 0; j < rows; j++) {
+						BufferBase<rows, cols>::grid.at(i).at(j) = BufferBase<rows, cols>::grid.at(i + 1).at(j);
+					}
+				}
+
+				int adjustedVal = max * (rows - 1);
+				int tempIndex = 0;
+
+				for (int rowIndex = 0; rowIndex < rows; rowIndex++) {
+					int adjustedIndex = abs(rowIndex - rows + 1);
+
+					BufferBase<rows, cols>::grid.at(cols - 1).at(rowIndex) =
+						isValueBetween(adjustedIndex, lastIndex, adjustedVal);
+
+					if (adjustedIndex == adjustedVal) { tempIndex = adjustedIndex; }
+				}
+
+				// reset
+				BufferBase<rows, cols>::counter = BufferBase<rows, cols>::time_smp;
+				max = 0;
+				lastIndex = tempIndex;
+			}
+		}
+	}
+
+private:
+	float max = 0;
+	int lastIndex = 0;
+
+	bool isValueBetween(int value, int min, int max)
+	{
+		return (value == max) || (value > min && value < max) || (value > max && value < min);
+	}
+};
+
 #endif
