@@ -24,7 +24,6 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: ${{ matrix.target }}
-        secrets:
           MACOS_CERTIFICATE: "${{ secrets.MACOS_CERTIFICATE }}"
           MACOS_CERTIFICATE_PW: "${{ secrets.MACOS_CERTIFICATE_PW }}"
 
@@ -40,7 +39,6 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: ${{ matrix.target }}
-        secrets:
           MACOS_CERTIFICATE: "${{ secrets.MACOS_CERTIFICATE }}"
           MACOS_CERTIFICATE_PW: "${{ secrets.MACOS_CERTIFICATE_PW }}"
 
@@ -57,7 +55,6 @@ jobs:
         with:
           target: ${{ matrix.target }}
           pawpaw: true
-        secrets:
           MACOS_CERTIFICATE: "${{ secrets.MACOS_CERTIFICATE }}"
           MACOS_CERTIFICATE_PW: "${{ secrets.MACOS_CERTIFICATE_PW }}"
 
@@ -70,6 +67,5 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: pluginval
-        secrets:
           MACOS_CERTIFICATE: "${{ secrets.MACOS_CERTIFICATE }}"
           MACOS_CERTIFICATE_PW: "${{ secrets.MACOS_CERTIFICATE_PW }}"
