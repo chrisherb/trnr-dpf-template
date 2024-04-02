@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - master
+  workflow_call:
+    secrets:
+      MACOS_CERTIFICATE:
+        required: true
+      MACOS_CERTIFICATE_PW:
+        required: true
 
 jobs:
   linux-cmake:
@@ -18,6 +24,8 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: ${{ matrix.target }}
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PW: ${{ secrets.MACOS_CERTIFICATE_PW }}
 
   macos-cmake:
     strategy:
@@ -31,6 +39,8 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: ${{ matrix.target }}
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PW: ${{ secrets.MACOS_CERTIFICATE_PW }}
 
   windows-cmake:
     strategy:
@@ -45,6 +55,8 @@ jobs:
         with:
           target: ${{ matrix.target }}
           pawpaw: true
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PW: ${{ secrets.MACOS_CERTIFICATE_PW }}
 
   pluginval:
     runs-on: ubuntu-20.04
