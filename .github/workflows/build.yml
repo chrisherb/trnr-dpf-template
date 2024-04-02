@@ -25,8 +25,8 @@ jobs:
         with:
           target: ${{ matrix.target }}
         secrets:
-          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
-          MACOS_CERTIFICATE_PW: ${{ secrets.MACOS_CERTIFICATE_PW }}
+          MACOS_CERTIFICATE: "${{ secrets.MACOS_CERTIFICATE }}"
+          MACOS_CERTIFICATE_PW: "${{ secrets.MACOS_CERTIFICATE_PW }}"
 
   macos-cmake:
     strategy:
@@ -41,8 +41,8 @@ jobs:
         with:
           target: ${{ matrix.target }}
         secrets:
-          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
-          MACOS_CERTIFICATE_PW: ${{ secrets.MACOS_CERTIFICATE_PW }}
+          MACOS_CERTIFICATE: "${{ secrets.MACOS_CERTIFICATE }}"
+          MACOS_CERTIFICATE_PW: "${{ secrets.MACOS_CERTIFICATE_PW }}"
 
   windows-cmake:
     strategy:
@@ -58,8 +58,8 @@ jobs:
           target: ${{ matrix.target }}
           pawpaw: true
         secrets:
-          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
-          MACOS_CERTIFICATE_PW: ${{ secrets.MACOS_CERTIFICATE_PW }}
+          MACOS_CERTIFICATE: "${{ secrets.MACOS_CERTIFICATE }}"
+          MACOS_CERTIFICATE_PW: "${{ secrets.MACOS_CERTIFICATE_PW }}"
 
   pluginval:
     runs-on: ubuntu-20.04
@@ -71,5 +71,5 @@ jobs:
         with:
           target: pluginval
         secrets:
-          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
-          MACOS_CERTIFICATE_PW: ${{ secrets.MACOS_CERTIFICATE_PW }}
+          MACOS_CERTIFICATE: "${{ secrets.MACOS_CERTIFICATE }}"
+          MACOS_CERTIFICATE_PW: "${{ secrets.MACOS_CERTIFICATE_PW }}"
