@@ -3,7 +3,7 @@
 
 #include "TemplateArtwork.hpp"
 
-#define DISTRHO_PLUGIN_BRAND "Ternär"
+#define DISTRHO_PLUGIN_BRAND "Ternär Music Technology"
 #define DISTRHO_PLUGIN_NAME "Template"
 #define DISTRHO_PLUGIN_URI "https://github.com/chrisherb"
 #define DISTRHO_PLUGIN_CLAP_ID "trnr.Template"
