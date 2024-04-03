@@ -18,8 +18,6 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: ${{ matrix.target }}
-          macOS_certificate: "${{ secrets.MACOS_CERTIFICATE }}"
-          macOS_certificate_pw: "${{ secrets.MACOS_CERTIFICATE_PW }}"
 
   macos-cmake:
     strategy:
@@ -49,8 +47,6 @@ jobs:
         with:
           target: ${{ matrix.target }}
           pawpaw: true
-          macOS_certificate: "${{ secrets.MACOS_CERTIFICATE }}"
-          macOS_certificate_pw: "${{ secrets.MACOS_CERTIFICATE_PW }}"
 
   pluginval:
     runs-on: ubuntu-20.04
@@ -61,5 +57,3 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: pluginval
-          macOS_certificate: "${{ secrets.MACOS_CERTIFICATE }}"
-          macOS_certificate_pw: "${{ secrets.MACOS_CERTIFICATE_PW }}"
