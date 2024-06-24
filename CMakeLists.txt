@@ -10,11 +10,11 @@ target_link_libraries(trnr-dsp trnr-lib)
 
 # add dpf and plugins
 add_subdirectory(lib/dpf)
-add_subdirectory(plugins/Template)
+add_subdirectory(plugins/dpf/Template)
 
 # min-api setup and subroutines
 include(lib/min-api/script/min-package.cmake)
 
 # add min-api and externals
 add_subdirectory(lib/min-api)
-add_subdirectory(plugins/trnr.core.template_tilde)
+add_subdirectory(plugins/max/trnr.core.template_tilde)
