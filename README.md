@@ -1,6 +1,6 @@
 # trnr-dpf-template
 
-Neat template for a [DPF](https://github.com/DISTRHO/DPF) plugin. Work in progress.
+Neat template for a [DPF](https://github.com/DISTRHO/DPF) plugin and Max external which share one DSP. Work in progress.
 
 ## gh-actions
 

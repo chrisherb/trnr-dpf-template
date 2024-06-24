@@ -1,4 +1,4 @@
-dpf_add_plugin(Template
+dpf_add_plugin(TemplatePlugin
   TARGETS
     clap vst2 vst3 jack
   FILES_DSP
@@ -8,7 +8,10 @@ dpf_add_plugin(Template
     TemplateUI.cpp
 )
 
-target_include_directories(Template
+target_link_libraries(TemplatePlugin-dsp PRIVATE trnr-dsp)
+target_link_libraries(TemplatePlugin-ui PRIVATE trnr-dsp)
+
+target_include_directories(TemplatePlugin
   PUBLIC
     .
     # any additional include directories

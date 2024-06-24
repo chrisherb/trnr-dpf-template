@@ -1,8 +1,20 @@
 cmake_minimum_required(VERSION 3.7)
 
-project(Template)
+project(trnr-template)
 
-set(CMAKE_CXX_STANDARD 11)
+# add trnr-lib and link with dsp code
+add_subdirectory(lib/trnr-lib)
+add_library(trnr-dsp SHARED dsp/DSP.cpp)
+target_include_directories(trnr-dsp PUBLIC dsp)
+target_link_libraries(trnr-dsp trnr-lib)
 
-add_subdirectory(dpf)
+# add dpf and plugins
+add_subdirectory(lib/dpf)
 add_subdirectory(plugins/Template)
+
+# min-api setup and subroutines
+include(lib/min-api/script/min-package.cmake)
+
+# add min-api and externals
+add_subdirectory(lib/min-api)
+add_subdirectory(plugins/trnr.core.template_tilde)

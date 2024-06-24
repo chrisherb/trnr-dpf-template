@@ -1,6 +1,9 @@
 [submodule "dpf"]
-	path = dpf
+	path = lib/dpf
 	url = https://github.com/DISTRHO/DPF.git
 [submodule "trnr-lib"]
-	path = trnr-lib
+	path = lib/trnr-lib
 	url = https://github.com/chrisherb/trnr-lib
+[submodule "lib/min-api"]
+	path = lib/min-api
+	url = https://github.com/Cycling74/min-api.git

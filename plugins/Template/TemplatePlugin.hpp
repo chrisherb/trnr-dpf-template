@@ -4,6 +4,8 @@
 #include "DistrhoPlugin.hpp"
 #include "WaveformBuffer.h"
 
+#include <DSP.hpp>
+
 START_NAMESPACE_DISTRHO
 
 // -----------------------------------------------------------------------
