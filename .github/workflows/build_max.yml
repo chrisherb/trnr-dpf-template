@@ -22,13 +22,21 @@ jobs:
       - name: set environment variable
         run: echo "BUILD_MAX=ON" >> $GITHUB_ENV
 
+      - name: verify environment variable
+        run: echo "BUILD_MAX=$BUILD_MAX"
+
       - name: configure_macos
         if: matrix.os == 'macos-latest'
         run: mkdir build && cd build && cmake -G Xcode ..
+        env:
+          BUILD_MAX: ${{ env.BUILD_MAX }}
 
       - name: configure_windows
         if: matrix.os == 'windows-latest'
-        run: mkdir build && cd build && cmake ..
+        run: mkdir build && cd build && cmake ..  
+        shell: bash
+        env:
+          BUILD_MAX: ${{ env.BUILD_MAX }}
 
       - name: build_release
         if: matrix.config == 'release'
