@@ -1,9 +1,9 @@
-name: Release
+name: build max externals
 
 on:
   push:
     tags:
-    - "*"
+      - "*"
 
 jobs:
   package:
@@ -132,9 +132,12 @@ jobs:
           name: ${{ github.event.repository.name }}-zipped-release
           path: ${{ github.event.repository.name }}.zip
 
-      - uses: ncipollo/release-action@v1
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          artifacts: ${{ github.event.repository.name }}.zip
-          body: "Max Package for all supported platforms"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          skipIfReleaseExists: true
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          files: |
+            ${{ env.RELEASE_FILENAME }}
