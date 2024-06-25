@@ -20,6 +20,9 @@ if(BUILD_DPF)
 endif()
 
 if(BUILD_MAX)
+    # enable apple silicon builds
+    set(CMAKE_OSX_ARCHITECTURES x86_64;arm64)
+
     # min-api setup and subroutines
     include(lib/min-api/script/min-package.cmake)
 
