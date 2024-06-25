@@ -1,6 +1,6 @@
-# trnr-dpf-template
+# trnr-template
 
-Neat template for a [DPF](https://github.com/DISTRHO/DPF) plugin and Max external which share one DSP. Work in progress.
+Neat plugin template that will output VST2/VST3/CLAP plugins and a Max external while sharing one DSP object. Powered by the [DPF](https://github.com/DISTRHO/DPF) plugin framework.
 
 ## gh-actions
 
