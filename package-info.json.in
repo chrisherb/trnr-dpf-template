@@ -1,0 +1,24 @@
+{
+  "author": "Christopher Herb",
+  "description": "A collection of Max externals used in the development of the M4L devices by Ternär Music Technology",
+  "homepatcher": "",
+  "max_version_min": "8.0",
+  "max_version_max": "none",
+  "name": "trnr.core",
+  "os": {
+    "macintosh": {
+      "platform": ["x64", "aarch64"],
+      "min_version": "none"
+    },
+    "windows": {
+      "platform": ["x64"],
+      "min_version": "none"
+    }
+  },
+  "package_extra": {
+    "reverse_domain": "com.trnr"
+  },
+  "tags": ["audio"],
+  "version": "0.0.1",
+  "website": "https://github.com/chrisherb/trnr-dpf-template"
+}

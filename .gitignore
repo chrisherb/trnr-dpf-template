@@ -21,4 +21,4 @@ externals/
 .vs/
 out/
 
-package-info.json.in
+package-info.json
