@@ -16,6 +16,8 @@ if(DEFINED ENV{BUILD_DPF})
 endif()
 
 if(DEFINED ENV{BUILD_MAX})
+    string(REGEX REPLACE "(.*)/" "" THIS_PACKAGE_NAME "${CMAKE_CURRENT_SOURCE_DIR}")
+    
     # enable apple silicon builds
     set(CMAKE_OSX_ARCHITECTURES x86_64;arm64)
 
