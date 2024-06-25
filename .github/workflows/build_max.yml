@@ -19,6 +19,9 @@ jobs:
           submodules: "recursive"
           fetch-depth: "0"
 
+      - name: set environment variable
+        run: echo "BUILD_MAX=ON" >> $GITHUB_ENV
+
       - name: configure_macos
         if: matrix.os == 'macos-latest'
         run: mkdir build && cd build && cmake -G Xcode ..
@@ -26,9 +29,6 @@ jobs:
       - name: configure_windows
         if: matrix.os == 'windows-latest'
         run: mkdir build && cd build && cmake ..
-        
-      - name: set environment variable
-        run: echo "BUILD_MAX=ON" >> $GITHUB_ENV
 
       - name: build_release
         if: matrix.config == 'release'

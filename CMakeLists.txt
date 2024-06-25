@@ -22,9 +22,6 @@ if(DEFINED ENV{BUILD_MAX})
     # min-api setup and subroutines
     include(lib/min-api/script/min-package.cmake)
 
-    # override output directory
-    set(C74_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/externals")
-
     # add min-api and externals
     add_subdirectory(lib/min-api)
     add_subdirectory(plugins/max/trnr.core.template_tilde)
