@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.7)
 
 project(trnr-template)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 # add trnr-lib and link with dsp code
 add_subdirectory(lib/trnr-lib)
