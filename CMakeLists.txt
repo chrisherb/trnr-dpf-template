@@ -2,19 +2,27 @@ cmake_minimum_required(VERSION 3.7)
 
 project(trnr-template)
 
+# define options to build dpf and max projects
+option(BUILD_DPF "Build DPF plugins" ON)
+option(BUILD_MAX "Build Max externals" ON)
+
 # add trnr-lib and link with dsp code
 add_subdirectory(lib/trnr-lib)
 add_library(trnr-dsp SHARED dsp/DSP.cpp)
 target_include_directories(trnr-dsp PUBLIC dsp)
 target_link_libraries(trnr-dsp trnr-lib)
 
-# add dpf and plugins
-add_subdirectory(lib/dpf)
-add_subdirectory(plugins/dpf/Template)
+if(BUILD_DPF)
+    # add dpf and plugins
+    add_subdirectory(lib/dpf)
+    add_subdirectory(plugins/dpf/Template)
+endif()
 
-# min-api setup and subroutines
-include(lib/min-api/script/min-package.cmake)
+if(BUILD_MAX)
+    # min-api setup and subroutines
+    include(lib/min-api/script/min-package.cmake)
 
-# add min-api and externals
-add_subdirectory(lib/min-api)
-add_subdirectory(plugins/max/trnr.core.template_tilde)
+    # add min-api and externals
+    add_subdirectory(lib/min-api)
+    add_subdirectory(plugins/max/trnr.core.template_tilde)
+endif()

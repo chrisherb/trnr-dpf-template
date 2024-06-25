@@ -18,6 +18,7 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: ${{ matrix.target }}
+          dpf_path: lib/dpf
 
   macos-cmake:
     strategy:
@@ -33,6 +34,7 @@ jobs:
           target: ${{ matrix.target }}
           macOS_certificate: "${{ secrets.MACOS_CERTIFICATE }}"
           macOS_certificate_pw: "${{ secrets.MACOS_CERTIFICATE_PW }}"
+          dpf_path: lib/dpf
 
   windows-cmake:
     strategy:
@@ -47,6 +49,7 @@ jobs:
         with:
           target: ${{ matrix.target }}
           pawpaw: true
+          dpf_path: lib/dpf
 
   pluginval:
     runs-on: ubuntu-20.04
@@ -57,3 +60,4 @@ jobs:
       - uses: chrisherb/dpf-cmake-action@main
         with:
           target: pluginval
+          dpf_path: lib/dpf

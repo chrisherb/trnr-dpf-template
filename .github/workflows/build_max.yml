@@ -21,11 +21,11 @@ jobs:
 
       - name: configure_macos
         if: matrix.os == 'macos-latest'
-        run: mkdir build && cd build && cmake -G Xcode ..
+        run: mkdir build && cd build && cmake -G Xcode .. -B build/max -DBUILD_MAX=ON -DBUILD_DPF=OFF
 
       - name: configure_windows
         if: matrix.os == 'windows-latest'
-        run: mkdir build && cd build && cmake ..
+        run: mkdir build && cd build && cmake .. -B build/max -DBUILD_MAX=ON -DBUILD_DPF=OFF
 
       # - name: build_debug
       #   if: matrix.config == 'debug'
@@ -33,7 +33,7 @@ jobs:
 
       - name: build_release
         if: matrix.config == 'release'
-        run: cmake --build build --config 'Release'
+        run: cmake --build build/max --config 'Release'
 
       - name: test
         run: cd build && ctest -C ${{ matrix.config }} . -V
