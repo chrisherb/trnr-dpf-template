@@ -1,4 +1,4 @@
-name: build dpf plugins
+name: build plugins
 
 on: 
   push:
