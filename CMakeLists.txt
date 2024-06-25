@@ -9,19 +9,23 @@ add_library(trnr-dsp SHARED dsp/DSP.cpp)
 target_include_directories(trnr-dsp PUBLIC dsp)
 target_link_libraries(trnr-dsp trnr-lib)
 
-# add dpf and plugins
-add_subdirectory(lib/dpf)
-add_subdirectory(plugins/dpf/Template)
+if(DEFINED ENV{BUILD_DPF})
+    # add dpf and plugins
+    add_subdirectory(lib/dpf)
+    add_subdirectory(plugins/dpf/Template)
+endif()
 
-# enable apple silicon builds
-set(CMAKE_OSX_ARCHITECTURES x86_64;arm64)
+if(DEFINED ENV{BUILD_MAX})
+    # enable apple silicon builds
+    set(CMAKE_OSX_ARCHITECTURES x86_64;arm64)
 
-# min-api setup and subroutines
-include(lib/min-api/script/min-package.cmake)
+    # min-api setup and subroutines
+    include(lib/min-api/script/min-package.cmake)
 
-# change build output directory
-set(C74_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/build/bin)
+    # change build output directory
+    set(C74_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/externals)
 
-# add min-api and externals
-add_subdirectory(lib/min-api)
-add_subdirectory(plugins/max/trnr.core.template_tilde)
+    # add min-api and externals
+    add_subdirectory(lib/min-api)
+    add_subdirectory(plugins/max/trnr.core.template_tilde)
+endif()
