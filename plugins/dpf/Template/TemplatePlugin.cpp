@@ -6,7 +6,6 @@ START_NAMESPACE_DISTRHO
 
 TemplatePlugin::TemplatePlugin()
 	: Plugin(paramCount, 0, 0) // 0 programs, 0 states
-	, fGain(0.5f)
 	, fWaveform(50)
 {
 }
@@ -43,7 +42,7 @@ float TemplatePlugin::getParameterValue(uint32_t index) const
 {
 	switch (index) {
 	case paramGain:
-		return fGain;
+		return mDsp.Gain;
 	default:
 		DISTRHO_SAFE_ASSERT(false);
 		return 0.0;
@@ -54,7 +53,7 @@ void TemplatePlugin::setParameterValue(uint32_t index, float value)
 {
 	switch (index) {
 	case paramGain:
-		fGain = value;
+		mDsp.Gain = value;
 		break;
 	}
 }
@@ -64,15 +63,7 @@ void TemplatePlugin::setParameterValue(uint32_t index, float value)
 
 void TemplatePlugin::run(const float** inputs, float** outputs, uint32_t frames)
 {
-	float inLeft, inRight;
-
-	for (uint32_t i = 0; i < frames; ++i) {
-		inLeft = inputs[0][i];
-		inRight = inputs[1][i];
-
-		outputs[0][i] = inLeft * fGain;
-		outputs[1][i] = inRight * fGain;
-	}
+	mDsp.processBlock(inputs, outputs, frames);
 
 	fWaveform.process(inputs, frames);
 }

@@ -15,19 +15,27 @@ public:
 	outlet<> out2 {this, "(signal) Output2", "signal"};
 
 	message<> dspsetup {this, "dspsetup", MIN_FUNCTION {double sr = samplerate();
-	m_dsp.setSamplerate(sr);
+	dsp.setSamplerate(sr);
 	return {};
+}
+}
+;
+
+attribute<number, threadsafe::no, limit::clamp> attr_gain {this, "gain", 0.1, range {0.0, 1.0}, setter {MIN_FUNCTION {dsp.Gain = args[0];
+return args;
+}
 }
 }
 ;
 
 void operator()(audio_bundle _input, audio_bundle _output) {
 
-	long sample_frames = _input.frame_count();
-	m_dsp.processBlock(_input.samples(), _output.samples(), sample_frames);
+	int sample_frames = _input.frame_count();
+
+	dsp.processBlock(_input.samples(), _output.samples(), sample_frames);
 }
 
 private:
-DSP m_dsp;
+DSP dsp;
 }
 ;

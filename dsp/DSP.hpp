@@ -2,11 +2,15 @@
 
 class DSP {
 public:
-  void setSamplerate(double samplerate);
+	float Gain = 0.5;
 
-  template <typename sample>
-  void processBlock(sample **inputs, sample **outputs, int blockSize);
+	void setSamplerate(double samplerate);
 
+	void processBlock(const float** inputs, float** outputs, int blockSize);
+
+	void processBlock(double** inputs, double** outputs, int blockSize);
+
+protected:
 private:
-  double mSamplerate = 48000;
+	double mSamplerate = 48000;
 };

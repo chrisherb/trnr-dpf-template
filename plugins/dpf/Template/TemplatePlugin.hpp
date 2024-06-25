@@ -27,13 +27,13 @@ protected:
 
 	const char* getDescription() const override { return "DPF plugin template by Ternär Music Technology"; }
 
-	const char* getMaker() const noexcept override { return "Ternär Music Technology"; }
+	const char* getMaker() const noexcept override { return "Ternar Music Technology"; }
 
-	const char* getHomePage() const override { return "https://github.com/chrisherb"; }
+	const char* getHomePage() const override { return "https://www.ternar.tech"; }
 
 	const char* getLicense() const noexcept override { return "GPL v2+"; }
 
-	uint32_t getVersion() const noexcept override { return d_version(1, 1, 0); }
+	uint32_t getVersion() const noexcept override { return d_version(0, 0, 1); }
 
 	int64_t getUniqueId() const noexcept override { return d_cconst('T', 'e', 'm', 'p'); }
 
@@ -57,9 +57,9 @@ protected:
 	// -------------------------------------------------------------------
 
 private:
-	float fGain;
-
 	friend class TemplateUI;
+
+	DSP mDsp;
 
 	BipolarWaveformBuffer<17, 27> fWaveform;
 

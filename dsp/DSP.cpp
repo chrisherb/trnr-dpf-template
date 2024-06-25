@@ -2,5 +2,18 @@
 
 void DSP::setSamplerate(double samplerate) { mSamplerate = samplerate; }
 
-template <typename sample>
-void DSP::processBlock(sample **inputs, sample **outputs, int blockSize) {}
+void DSP::processBlock(const float** inputs, float** outputs, int blockSize)
+{
+	for (int i = 0; i < blockSize; i++) {
+		outputs[0][i] = inputs[0][i] * Gain;
+		outputs[1][i] = inputs[1][i] * Gain;
+	}
+}
+
+void DSP::processBlock(double** inputs, double** outputs, int blockSize)
+{
+	for (int i = 0; i < blockSize; i++) {
+		outputs[0][i] = inputs[0][i] * Gain;
+		outputs[1][i] = inputs[1][i] * Gain;
+	}
+}
