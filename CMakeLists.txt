@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 
 project(trnr-template)
+set(CMAKE_CXX_STANDARD 17)
 
 # define options to build dpf and max projects
 option(BUILD_DPF "Build DPF plugins" ON)
