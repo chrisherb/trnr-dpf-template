@@ -11,7 +11,7 @@ To code sign the Mac builds, MACOS_CERTIFICATE (base64 encoded developer certifi
 The developer certificate can be converted from p12 to base64 with the following command: 
 `$ base64 Certificate.p12 > Certificate.base64`
 
-## how to convert images to binary
+## DPF: how to convert images to binary
 
-- navigate to plugin folder (e.g. plugins/Template)
-- call converter with .../../dpf/utils/png2rgba.py TemplateArtwork Artwork
+- navigate to plugin folder (e.g. plugins/dpf/Template)
+- call converter with .../../../lib/dpf/utils/png2rgba.py TemplateArtwork Artwork
