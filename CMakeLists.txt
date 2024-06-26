@@ -25,5 +25,5 @@ if(DEFINED ENV{BUILD_MAX})
 
     # add min-api and externals
     add_subdirectory(lib/min-api)
-    add_subdirectory(plugins/max/trnr.core.template_tilde)
+    add_subdirectory(plugins/max/Template_tilde)
 endif()
