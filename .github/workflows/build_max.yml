@@ -132,12 +132,12 @@ jobs:
         working-directory: ${{ github.event.repository.name }}
 
       - name: zip
-        run: zip -r ${{ github.event.repository.name }}.zip ${{ github.event.repository.name }}
+        run: zip -r ${{ github.event.repository.name }}-${{ github.ref_name }}-maxpackage.zip ${{ github.event.repository.name }}
 
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ github.event.repository.name }}-zipped-release
-          path: ${{ github.event.repository.name }}.zip
+          path: ${{ github.event.repository.name }}-${{ github.ref_name }}-maxpackage.zip
 
       - uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
