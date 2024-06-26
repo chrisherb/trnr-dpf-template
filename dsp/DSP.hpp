@@ -2,15 +2,17 @@
 
 class DSP {
 public:
-	float Gain = 0.5;
-
 	void setSamplerate(double samplerate);
 
 	void processBlock(const float** inputs, float** outputs, int blockSize);
 
 	void processBlock(double** inputs, double** outputs, int blockSize);
 
-protected:
+	void setGain(float gain) { mGain = gain; }
+
+	float getGain() const { return mGain; }
+
 private:
+	float mGain = 0.5;
 	double mSamplerate = 48000;
 };

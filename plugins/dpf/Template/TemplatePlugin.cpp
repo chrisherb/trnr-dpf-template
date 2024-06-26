@@ -42,7 +42,7 @@ float TemplatePlugin::getParameterValue(uint32_t index) const
 {
 	switch (index) {
 	case paramGain:
-		return mDsp.Gain;
+		return mDsp.getGain();
 	default:
 		DISTRHO_SAFE_ASSERT(false);
 		return 0.0;
@@ -53,7 +53,7 @@ void TemplatePlugin::setParameterValue(uint32_t index, float value)
 {
 	switch (index) {
 	case paramGain:
-		mDsp.Gain = value;
+		mDsp.setGain(value);
 		break;
 	}
 }

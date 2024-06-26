@@ -21,7 +21,7 @@ public:
 	}};
 
 	attribute<number, threadsafe::no, limit::clamp> attr_gain {this, "gain", 0.1, range {0.0, 1.0}, setter { MIN_FUNCTION {
-		dsp.Gain = args[0];
+		dsp.setGain(args[0]);
 		return args; 
 	}}};
 
