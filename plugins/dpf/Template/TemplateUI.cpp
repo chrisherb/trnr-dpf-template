@@ -53,6 +53,8 @@ void TemplateUI::imageKnobDragFinished(ImageKnob* knob) { editParameter(knob->ge
 
 void TemplateUI::imageKnobValueChanged(ImageKnob* knob, float value) { setParameterValue(knob->getId(), value); }
 
+void TemplateUI::imageKnobDoubleClicked(ImageKnob* knob) { knob->setValue(knob->getDefault(), true); }
+
 void TemplateUI::onDisplay()
 {
 	const GraphicsContext& context(getGraphicsContext());

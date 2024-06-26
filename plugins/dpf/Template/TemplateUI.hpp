@@ -32,6 +32,7 @@ protected:
 	void imageKnobDragStarted(ImageKnob* knob) override;
 	void imageKnobDragFinished(ImageKnob* knob) override;
 	void imageKnobValueChanged(ImageKnob* knob, float value) override;
+	void imageKnobDoubleClicked(ImageKnob* knob) override;
 
 	void onDisplay() override;
 
