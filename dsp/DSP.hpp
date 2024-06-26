@@ -15,4 +15,11 @@ public:
 private:
 	float mGain = 0.5;
 	double mSamplerate = 48000;
+	trnr::aw_cliponly2 mClipper;
+
+	template<typename sample>
+	void DSP::processBlock(sample** audio, int frames)
+	{
+		mClipper.process_block(audio, audio, frames);
+	}
 };
