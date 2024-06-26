@@ -1,6 +1,10 @@
 #include "DSP.hpp"
 
-void DSP::setSamplerate(double samplerate) { mSamplerate = samplerate; }
+void DSP::setSamplerate(double samplerate)
+{
+	mSamplerate = samplerate;
+	mClipper.set_samplerate(samplerate);
+}
 
 void DSP::processBlock(const float** inputs, float** outputs, int blockSize)
 {
