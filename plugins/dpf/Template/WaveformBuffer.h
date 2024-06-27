@@ -14,7 +14,7 @@ public:
 
 	void setTimeMs(float _time_ms) { time_smp = msToSamples(_time_ms); }
 
-	virtual void process(const float** inputs, uint32_t frames);
+	virtual void process(float** audio, uint32_t frames) {}
 
 	const std::array<std::array<bool, rows>, cols>& getGrid() const { return grid; }
 
@@ -35,12 +35,12 @@ public:
 	{
 	}
 
-	void process(const float** inputs, uint32_t frames) override
+	void process(float** audio, uint32_t frames) override
 	{
 		for (uint32_t i = 0; i < frames; ++i) {
 
 			// get maximum value from left/right channels
-			float max = abs(inputs[0][i]) > abs(inputs[1][i]) ? inputs[0][i] : inputs[1][i];
+			float max = abs(audio[0][i]) > abs(audio[1][i]) ? audio[0][i] : audio[1][i];
 
 			if (max > posMax) posMax = max;
 			if (max < negMax) negMax = max;
@@ -96,12 +96,12 @@ public:
 	{
 	}
 
-	void process(const float** inputs, uint32_t frames) override
+	void process(float** audio, uint32_t frames) override
 	{
 		for (uint32_t i = 0; i < frames; ++i) {
 
 			// get maximum value from left/right channels
-			float localMax = abs(inputs[0][i]) > abs(inputs[1][i]) ? inputs[0][i] : inputs[1][i];
+			float localMax = abs(audio[0][i]) > abs(audio[1][i]) ? audio[0][i] : audio[1][i];
 
 			if (localMax > max) max = localMax;
 

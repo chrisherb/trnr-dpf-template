@@ -6,9 +6,9 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 # add trnr-lib and link with dsp code
 add_subdirectory(lib/trnr-lib)
-add_library(trnr-dsp SHARED dsp/DSP.cpp)
-target_include_directories(trnr-dsp PUBLIC dsp)
-target_link_libraries(trnr-dsp trnr-lib)
+add_library(trnr-dsp INTERFACE)
+target_include_directories(trnr-dsp INTERFACE dsp)
+target_link_libraries(trnr-dsp INTERFACE trnr-lib)
 
 if(DEFINED ENV{BUILD_DPF})
     # add dpf and plugins

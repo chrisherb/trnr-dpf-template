@@ -59,7 +59,7 @@ protected:
 private:
 	friend class TemplateUI;
 
-	DSP mDsp;
+	DSP<float> mDsp;
 
 	BipolarWaveformBuffer<17, 27> fWaveform;
 

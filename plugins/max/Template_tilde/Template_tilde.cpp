@@ -33,7 +33,7 @@ public:
 	}
 
 private:
-	DSP dsp;
+	DSP<double> dsp;
 };
 
 MIN_EXTERNAL(Template);

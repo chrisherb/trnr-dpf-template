@@ -65,7 +65,7 @@ void TemplatePlugin::run(const float** inputs, float** outputs, uint32_t frames)
 {
 	mDsp.processBlock(inputs, outputs, frames);
 
-	fWaveform.process(inputs, frames);
+	fWaveform.process(outputs, frames);
 }
 
 // -----------------------------------------------------------------------
