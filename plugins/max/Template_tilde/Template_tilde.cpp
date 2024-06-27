@@ -35,3 +35,5 @@ public:
 private:
 	DSP dsp;
 };
+
+MIN_EXTERNAL(Template);
