@@ -1,0 +1,6 @@
+{
+    "cmake.environment": {
+        "BUILD_DPF": "ON",
+        "BUILD_MAX": "ON"
+    },
+}
