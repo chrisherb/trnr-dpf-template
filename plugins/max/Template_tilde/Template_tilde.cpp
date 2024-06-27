@@ -4,7 +4,7 @@
 
 using namespace c74::min;
 
-class max_template : public object<max_template>, public vector_operator<> {
+class Template : public object<Template>, public vector_operator<> {
 public:
 	MIN_DESCRIPTION {"Template for a Max external"};
 	MIN_TAGS {"template"};
