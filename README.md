@@ -1,6 +1,6 @@
 # trnr-template
 
-Neat plugin template that will output VST2/VST3/CLAP plugins and a Max external while sharing one DSP object. Powered by the [DPF](https://github.com/DISTRHO/DPF) plugin framework.
+Neat plugin template that will output VST2/VST3/CLAP plugins and a Max external while sharing one DSP object. Powered by the [DPF plugin framework](https://github.com/DISTRHO/DPF) and the [Min-DevKit](https://github.com/Cycling74/min-devkit).
 
 ## gh-actions
 
@@ -15,3 +15,8 @@ The developer certificate can be converted from p12 to base64 with the following
 
 - navigate to plugin folder (e.g. plugins/dpf/Template)
 - call converter with .../../../lib/dpf/utils/png2rgba.py TemplateArtwork Artwork
+
+## Max external: how to remove quarantine flag on Mac
+
+- run `xattr -d com.apple.quarantine path/to/external`
+- verify that `xattr -l path/to/external` returns nothing
